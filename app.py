@@ -32,7 +32,11 @@ if uploaded_file is not None:
             class_indices = result.boxes.cls.tolist()
             if class_indices:
                 predicted_class = names_dict[int(class_indices[0])]
-                st.write(f"The model thinks this egg is: **{predicted_class}** 💖")
+                if predicted_class == 'Fertile':
+                    st.write("Alert! Our model has confirmed this egg is hosting a tiny party inside, so it's Fertile! Best not to crash it.")
+                else:
+                    st.write("This egg's life motto is 'No plans, just vibes.' Our model has classified it as Infertile.")
             else:
-                st.write("The model couldn't find an egg in the picture. 🤔")
+                    st.write("My model is asking, 'Is this a potato? A rock? A very round... pillow?' It has no idea! No egg found.")
+
 

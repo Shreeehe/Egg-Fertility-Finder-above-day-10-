@@ -24,10 +24,7 @@ if uploaded_file is not None:
 
     # Here, we use our model to make a prediction
     # We save the picture for a moment so the model can read it
-    with tempfile.NamedTemporaryFile(delete=False) as tmp_file:
-        tmp_file.write(uploaded_file.read())
-        results = model.predict(source=tmp_file.name)
-
+    results = model.predict(source=image)
     # This is how we look at what the model said
     if results:
         for result in results:
@@ -38,3 +35,4 @@ if uploaded_file is not None:
                 st.write(f"The model thinks this egg is: **{predicted_class}** 💖")
             else:
                 st.write("The model couldn't find an egg in the picture. 🤔")
+
